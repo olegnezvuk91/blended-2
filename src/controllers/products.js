@@ -21,8 +21,9 @@ export const getProductByIdController = async (req, res) => {
   const product = await getProductById(productId);
 
   if (!product) {
-    throw new createHttpError(404, 'Product not found');
+    throw createHttpError(404, 'Product not found');
   }
+
   res.status(200).json({
     status: 200,
     message: `Successfully found product with id ${productId}!`,
@@ -44,7 +45,7 @@ export const updateProductController = async (req, res) => {
   const product = await updateProduct(productId, req.body);
 
   if (!product) {
-    throw new createHttpError(404, 'Product not found');
+    throw createHttpError(404, 'Product not found');
   }
 
   res.status(200).json({
